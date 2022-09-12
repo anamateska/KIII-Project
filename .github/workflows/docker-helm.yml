@@ -1,4 +1,4 @@
-name: Build and push Docker image to Dockerhub
+name: Build and push Docker image to Dockerhub and Helm Release
 
 on:
   push:
@@ -27,3 +27,14 @@ jobs:
         with:
           push: true
           tags: anamateska/kiii-project:latest
+  helm:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+      -
+        name: Helm install
+        uses: WyriHaximus/github-action-helm3@v2
+        with:
+          exec: helm upgrade --install kiii-project-chart ./kiii-project-chart
+        
+  
