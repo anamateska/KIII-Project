@@ -1,12 +1,15 @@
 version: "3"
 services:
     app:
-      build: ""
+      image: anamateska/kiii-project:latest
+      build:
+        context: .
+        dockerfile: Dockerfile
       container_name: kiii-project
       environment:
         SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/kiii-db
       ports:
-        - 8000:8080
+        - 8080:8080
       depends_on:
         - db
     db:
