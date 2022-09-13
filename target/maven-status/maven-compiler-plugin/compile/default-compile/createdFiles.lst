@@ -1,0 +1,8 @@
+mk\ukim\finki\kiiiproject\model\Teacher.class
+mk\ukim\finki\kiiiproject\repository\TeacherRepository.class
+mk\ukim\finki\kiiiproject\model\Subject.class
+mk\ukim\finki\kiiiproject\service\impl\SubjectServiceImpl.class
+mk\ukim\finki\kiiiproject\service\SubjectService.class
+mk\ukim\finki\kiiiproject\KiiiProjectApplication.class
+mk\ukim\finki\kiiiproject\web\SubjectController.class
+mk\ukim\finki\kiiiproject\repository\SubjectRepository.class
