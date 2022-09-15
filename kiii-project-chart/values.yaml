@@ -80,3 +80,12 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      postgresqlDatabase: "kiii-db"
+      postgresqlPassword: "anamateska"
+      postgresqlUsername: "postgres"
+      servicePort: "5432"
