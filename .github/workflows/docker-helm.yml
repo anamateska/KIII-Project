@@ -31,10 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker
     steps:
-      -
-        name: Helm install
-        uses: WyriHaximus/github-action-helm3@v2
-        with:
-          exec: helm upgrade --install kiii-project-chart ./kiii-project-chart
-        
-  
+     - uses: actions/checkout@v2
+     - name: Helm Lint
+       uses: WyriHaximus/github-action-helm3@v2
+       with:
+         exec: helm lint ./kiii-project-chart
