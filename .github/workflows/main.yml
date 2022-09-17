@@ -1,26 +1,19 @@
-# .github/workflows/deploy.yml
-name: Deploy
+name: CI
+
 on:
-  push:
-    branches:
-      - 'master'
+  - push
 
 jobs:
-  deployment:
-    runs-on: 'ubuntu-latest'
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-    - name: 'Deploy'
-      uses: 'deliverybot/helm@v1'
-      with:
-        release: 'nginx'
-        namespace: 'default'
-        chart: 'kiii-project-chart'
-        token: '${{ github.token }}'
-        values: |
-          name: foobar
-        value-files: 
-          "values.yaml"
-      env:
-        KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
+      - name: Deploy to k8s
+        uses: paychantorg/action.k8s@v1.0.0
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: |
+            helm list
+            kubectl get pods
