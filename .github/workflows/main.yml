@@ -1,15 +1,22 @@
-on: push
-name: deploy
+name: Deploy to Kubernetes
+
+on:
+  push:
+    branches: [ master ]
+
 jobs:
   deploy:
-    name: deploy to cluster
+    name: Deploy to Kubernetes
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: deploy chart to cluster
-      uses: wahyd4/kubectl-helm-action@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-      with:
-        args: |
-          helm upgrade --install kiii-project-chart ./kiii-project-chart
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Create kubeconfig
+      run: |
+        mkdir ${HOME}/.kube
+        echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
+        cat ${HOME}/.kube/config
+    - name: Use context
+      run: kubectl config use-context minikube
+    - name: Deploy to K8s
+      run: helm upgrade --install kiii-project-chart ./kiii-project-chart
