@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/subjects")
+@RequestMapping(value={"/", "/subjects"})
 public class SubjectController {
 
     private final SubjectService subjectService;
