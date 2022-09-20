@@ -30,13 +30,11 @@ services:
     prometheus:
       image: prom/prometheus:latest
       container_name: prometheus
-      restart: always
       ports:
-        - 9090:9090
+        - 9000:9090
       volumes:
-        - type: bind
-          source: ./prometheus.yaml
-          target: /src/main/resources/prometheus.yaml
+        - .\prometheus-conf\prometheus.yml:/etc/prometheus/prometheus.yml
+        - prometheus-data:/prometheus
 
     grafana:
       image: grafana/grafana:latest
@@ -50,4 +48,5 @@ services:
 
 volumes:
     postgres-data:
+    prometheus-data:
     grafana-data:
