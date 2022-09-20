@@ -42,6 +42,5 @@ jobs:
     steps:
      - uses: WyriHaximus/github-action-helm3@v2
        with:
-         exec: minikube start
-#          exec: helm upgrade --install kiii-project-chart ./kiii-project-chart
-#          kubeconfig: '${{ secrets.KUBECONFIG }}'
+         exec: helm upgrade --install kiii-project-chart ./kiii-project-chart
+         kubeconfig: '${{ secrets.KUBECONFIG }}'
