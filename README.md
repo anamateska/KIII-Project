@@ -1,5 +1,3 @@
-[![Build and push Docker image to Dockerhub and Helm Release](https://github.com/anamateska/KIII-Project/actions/workflows/docker-helm.yml/badge.svg)](https://github.com/anamateska/KIII-Project/actions/workflows/docker-helm.yml)
-
 <h2>Проект по предметот Континуирана интеграција и испорака - Ана Матеска 186059</h2>
 
 <h3>Користени технологии: </h3>
